@@ -17,6 +17,33 @@ class LogoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     /**
+     * @OA\Post(
+     *     path="/api/logout",
+     *     summary="Logout a user and invalidate the token",
+     *     tags={"Authentication"},
+     *     security={
+     *         {"bearerAuth": {}}
+     *     },
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful logout",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=true),
+     *             @OA\Property(property="message", type="string", example="Logout Successfully!")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthorized - Invalid token",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Token is invalid or expired")
+     *         )
+     *     )
+     * )
+     */
     public function __invoke(Request $request)
     {        
         //remove token

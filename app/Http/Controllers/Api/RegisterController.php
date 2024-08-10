@@ -7,6 +7,46 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * @OA\Post(
+ *     path="/api/register",
+ *     summary="Register a new user",
+ *     description="Registers a new user and returns the user details along with a success status.",
+ *     tags={"User"},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             @OA\Property(property="name", type="string", example="John Doe"),
+ *             @OA\Property(property="email", type="string", format="email", example="john.doe@example.com"),
+ *             @OA\Property(property="password", type="string", format="password", example="password123"),
+ *             @OA\Property(property="password_confirmation", type="string", format="password", example="password123")
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=201,
+ *         description="User registered successfully",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="success", type="boolean", example=true),
+ *             @OA\Property(property="user", ref="#/components/schemas/User")
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Validation error",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="message", type="string", example="The given data was invalid."),
+ *             @OA\Property(property="errors", type="object")
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=409,
+ *         description="Conflict - User creation failed",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="success", type="boolean", example=false)
+ *         )
+ *     )
+ * )
+ */
 class RegisterController extends Controller
 {
     /**

@@ -9,6 +9,47 @@ use Illuminate\Support\Facades\Validator;
 class LoginController extends Controller
 {
     /**
+     * @OA\Post(
+     *     path="/api/login",
+     *     summary="Authenticate a user and return a token",
+     *     tags={"Authentication"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"email", "password"},
+     *             @OA\Property(property="email", type="string", format="email", example="user@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="password123")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful login",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=true),
+     *             @OA\Property(property="user", ref="#/components/schemas/User"),
+     *             @OA\Property(property="token", type="string", example="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthorized - Invalid credentials",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Email atau Password Anda salah")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Validation error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="email", type="array", @OA\Items(type="string"), example={"The email field is required."}),
+     *             @OA\Property(property="password", type="array", @OA\Items(type="string"), example={"The password field is required."})
+     *         )
+     *     )
+     * )
+     */
+
+    /**
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
