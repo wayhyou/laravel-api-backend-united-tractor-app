@@ -19,12 +19,12 @@ The United Tractor API provides endpoints to manage users, categories, and produ
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/yourproject.git
+    git clone https://github.com/wayhyou/laravel-api-backend-united-tractor-app.git
     ```
 
 2. **Navigate to the project directory:**
     ```bash
-    cd yourproject
+    cd laravel-api-backend-united-tractor-app
     ```
 
 3. **Install PHP dependencies:**
@@ -61,10 +61,11 @@ php artisan serve
 By default, this will start the application at `http://localhost:8000`.
 
 
-Access the Swagger Documentation:
+Access the Documentation:
 
 
-Visit `http://127.0.0.1:8000/api/documentation` to view the API documentation.
+Visit `http://127.0.0.1:8000/api/documentation` to view the Swagger API documentation.
+Visit `http://127.0.0.1:8000/` to view the Home Page API documentation.
 
 
 If you need to run tests or perform other tasks, you can use:
